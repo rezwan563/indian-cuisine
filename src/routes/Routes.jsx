@@ -3,6 +3,7 @@ import Home from "../pages/Home/Home";
 import Main from "../layout/Main/Main";
 import About from "../pages/About/About";
 import Blog from "../pages/Blog/Blog";
+import ErrorPage from "../pages/Shared/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
             {
                 path: 'blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '*',
+                element: <ErrorPage></ErrorPage>
             }
         ]
     }
