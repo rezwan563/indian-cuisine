@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Home.css";
 import Banner from "../Shared/Banner/Banner";
 import { Link } from "react-router-dom";
 import FeaturedRecipeOne from "./HomeComponents/FeaturedRecipeOne";
 import FeaturedRecipeTwo from "./HomeComponents/FeaturedRecipeTwo";
+import ChefSection from "./HomeComponents/ChefSection";
 
 const Home = () => {
+  const [chefs, setChefs] = useState([]);
+
+  useEffect(() =>{
+    fetch('https://assignment-10-indian-cuisine-server-rezwan563.vercel.app/chefs')
+    .then(res => res.json())
+    .then(data => setChefs(data))
+  },[])
   return (
     <div>
       <section className="bg-img-container">
@@ -25,6 +33,11 @@ const Home = () => {
       <section>
         <FeaturedRecipeOne></FeaturedRecipeOne>
         <FeaturedRecipeTwo></FeaturedRecipeTwo>
+      </section>
+      <section>
+       {
+        chefs.length > 0 && <ChefSection chefs={chefs}></ChefSection>
+       }
       </section>
     </div>
   );
