@@ -5,10 +5,12 @@ import { Link } from "react-router-dom";
 import FeaturedRecipeOne from "./HomeComponents/FeaturedRecipeOne";
 import FeaturedRecipeTwo from "./HomeComponents/FeaturedRecipeTwo";
 import ChefSection from "./HomeComponents/ChefSection";
+import TodaysSpeciality from "./HomeComponents/TodaysSpeciality";
 
 const Home = () => {
   const [chefs, setChefs] = useState([]);
   const [recipes, setRecipes] = useState([]);
+  const [allrecipes, setAllRecipes] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -24,6 +26,7 @@ const Home = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        setAllRecipes(data)
         const twoRecipes = data.filter(i => parseInt(i.id) < 3);
         setRecipes(twoRecipes)
       });
@@ -46,6 +49,7 @@ const Home = () => {
         </div>
       </section>
       <section>
+        {/* Featured two recipes section */}
         {
           recipes.length === 2 && 
           recipes.slice(0, 1).map(recipe => <FeaturedRecipeOne key={recipe.id} recipe={recipe}></FeaturedRecipeOne>)
@@ -57,6 +61,11 @@ const Home = () => {
       </section>
       <section>
         {chefs.length > 0 && <ChefSection chefs={chefs}></ChefSection>}
+      </section>
+      <section>
+       {
+        allrecipes.length === 10 &&  <TodaysSpeciality allrecipes={allrecipes}></TodaysSpeciality>
+       }
       </section>
     </div>
   );
