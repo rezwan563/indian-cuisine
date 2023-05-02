@@ -1,6 +1,7 @@
 import React from "react";
 
-const FeaturedRecipeOne = () => {
+const FeaturedRecipeOne = ({recipe}) => {
+  const { id, name, imgUrl, description } = recipe;
   return (
     <section className="w-3/4 md:w-2/3 mx-auto my-8 md:my-36">
       <div>
@@ -12,12 +13,12 @@ const FeaturedRecipeOne = () => {
       <div className="grid md:grid-cols-2">
         <div className="border-2 border-slate-200 shadow-xl w-full md:w-96 image-full">
           <figure>
-            <img className="rounded" src="/fav_icon.avif" alt="Shoes" />
+            <img className="rounded" src={imgUrl} alt="Shoes" />
           </figure>
         </div>
         <div>
-          <h1 className="text-black md:text-2xl w-8 md:w-0">Doi Makhni</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae ratione quia eius blanditiis rerum dolorem minima architecto, ullam maiores exercitationem cupiditate facilis harum debitis dolorum doloremque obcaecati provident esse optio modi at! Molestias impedit laudantium facilis architecto nemo non fugiat dignissimos sed rerum animi. Illum laudantium quis quaerat quae nam?</p>
+          <h1 className="text-black md:text-2xl w-8 md:w-0">{name}</h1>
+          <p>{description}</p>
         </div>
       </div>
     </section>

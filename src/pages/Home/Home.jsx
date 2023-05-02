@@ -8,18 +8,33 @@ import ChefSection from "./HomeComponents/ChefSection";
 
 const Home = () => {
   const [chefs, setChefs] = useState([]);
+  const [recipes, setRecipes] = useState([]);
 
-  useEffect(() =>{
-    fetch('https://assignment-10-indian-cuisine-server-rezwan563.vercel.app/chefs')
-    .then(res => res.json())
-    .then(data => setChefs(data))
-  },[])
+  useEffect(() => {
+    fetch(
+      "https://assignment-10-indian-cuisine-server-rezwan563.vercel.app/chefs"
+    )
+      .then((res) => res.json())
+      .then((data) => setChefs(data));
+  }, []);
+
+  useEffect(() => {
+    fetch(
+      "https://assignment-10-indian-cuisine-server-rezwan563.vercel.app/recipes"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const twoRecipes = data.filter(i => parseInt(i.id) < 3);
+        setRecipes(twoRecipes)
+      });
+  }, []);
+
   return (
     <div>
       <section className="bg-img-container">
         <Banner></Banner>
         <div className="bottom-left text-3xl font-bold md:text-7xl">
-          Food that you <span className=''>crave</span>
+          Food that you <span className="">crave</span>
           <br />
           <div className="text-left mt-5">
             <Link to="/about_us">
@@ -31,13 +46,17 @@ const Home = () => {
         </div>
       </section>
       <section>
-        <FeaturedRecipeOne></FeaturedRecipeOne>
-        <FeaturedRecipeTwo></FeaturedRecipeTwo>
+        {
+          recipes.length === 2 && 
+          recipes.slice(0, 1).map(recipe => <FeaturedRecipeOne key={recipe.id} recipe={recipe}></FeaturedRecipeOne>)
+        }
+        {
+          recipes.length === 2 && 
+          recipes.slice(1, 2).map(recipe => <FeaturedRecipeTwo key={recipe.id} recipe={recipe}></FeaturedRecipeTwo>)
+        }
       </section>
       <section>
-       {
-        chefs.length > 0 && <ChefSection chefs={chefs}></ChefSection>
-       }
+        {chefs.length > 0 && <ChefSection chefs={chefs}></ChefSection>}
       </section>
     </div>
   );

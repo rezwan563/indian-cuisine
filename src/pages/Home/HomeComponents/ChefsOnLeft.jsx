@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa";
 
 const ChefsOnLeft = ({ data }) => {
   const { id, name, imgUrl, experience, likes, numRecipes } = data;
@@ -8,19 +9,21 @@ const ChefsOnLeft = ({ data }) => {
       <div>
         <h1 className="text-2xl md:text-3xl">{name}</h1>
         <ul>
-          <li className="font-semibold shadow-sm">{experience} years of experience</li>
+          <li className="font-semibold shadow-sm">
+            {experience} years of experience
+          </li>
           <div className="flex">
             <div className=" border-2 shadow-lg rounded-md p-3 bg-amber-400">
               {numRecipes} recipes
             </div>
-            <Link className=" border-2 shadow-lg rounded-md p-3 bg-amber-400 hover:bg-white hover:text-amber-500">
-              <button>View recipes</button>
-            </Link>
-            <div>
-              <div className="border-2 shadow-lg rounded-md p-3 bg-amber-400 ">
-                {likes} likes
-              </div>
+            <div className="border-2 shadow-lg rounded-md p-3 bg-amber-400 ">
+              {likes} likes
             </div>
+            <div className=" border-2 shadow-lg rounded-md p-3 bg-amber-400 hover:bg-white hover:text-amber-500">
+                  <Link>
+                    <button className="flex gap-2 items-center">View recipes <FaArrowRight></FaArrowRight></button>
+                  </Link>
+                </div>
           </div>
         </ul>
       </div>
