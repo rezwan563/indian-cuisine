@@ -6,7 +6,7 @@ const ErrorPage = () => {
       <div className="md:mx-auto">
         <img
           className="border shadow-md "
-          src="/src/assets/error_404.avif"
+          src="/error_404.avif"
           alt=""
         />
       </div>

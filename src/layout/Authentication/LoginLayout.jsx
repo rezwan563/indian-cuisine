@@ -12,7 +12,7 @@ const LoginLayout = () => {
         <div className="">
           <Login></Login>
         </div>
-        <div>
+        <div className="hidden md:block">
             <Banner></Banner>
         </div>
       </section>

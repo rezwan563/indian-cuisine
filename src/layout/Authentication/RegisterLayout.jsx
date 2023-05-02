@@ -10,7 +10,7 @@ const RegisterLayout = () => {
         <div className="">
             <Register></Register>
         </div>
-        <div>
+        <div className="hidden md:block">
           <Banner></Banner>
         </div>
       </section>

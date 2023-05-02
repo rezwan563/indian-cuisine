@@ -19,7 +19,7 @@ const Header = () => {
             </div>
             <div className='md:flex '>
                 <div className='avatar_img'>
-                    <img className='h-10' src="/src/assets/avatar_img.jpg" alt="" />
+                    <img className='h-10' src="/avatar_img.jpg" alt="" />
                     <span>Abid Rahman</span>
                 </div>
                 <Link to='/login'><button className='bg-amber-500 p-2 border'>Login</button></Link>

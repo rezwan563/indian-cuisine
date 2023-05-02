@@ -2,6 +2,8 @@ import React from "react";
 import "./Home.css";
 import Banner from "../Shared/Banner/Banner";
 import { Link } from "react-router-dom";
+import FeaturedRecipeOne from "./HomeComponents/FeaturedRecipeOne";
+import FeaturedRecipeTwo from "./HomeComponents/FeaturedRecipeTwo";
 
 const Home = () => {
   return (
@@ -19,6 +21,10 @@ const Home = () => {
             </Link>
           </div>
         </div>
+      </section>
+      <section>
+        <FeaturedRecipeOne></FeaturedRecipeOne>
+        <FeaturedRecipeTwo></FeaturedRecipeTwo>
       </section>
     </div>
   );

@@ -50,20 +50,20 @@ const Login = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-warning">Login</button>
               </div>
-              <button className="border py-3 flex justify-center items-center gap-2">
+              <button className="border py-3 flex justify-center items-center gap-2 hover:bg-slate-200">
                 <div>
                   <img
-                    src="/src/assets/google_icon.jpeg"
+                    src="/google_icon.jpeg"
                     className="h-10"
                     alt=""
                   />
                 </div>
                 <div>Continue with Google</div>
               </button>
-              <button className="border py-3 flex justify-center items-center gap-2">
+              <button className="border py-3 flex justify-center items-center gap-2 hover:bg-slate-200">
                 <div>
                   <img
-                    src="/src/assets/github_icon.jpg"
+                    src="/github_icon.jpg"
                     className="h-10"
                     alt=""
                   />
