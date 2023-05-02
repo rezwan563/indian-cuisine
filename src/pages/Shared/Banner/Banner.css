@@ -1,0 +1,9 @@
+.banner{
+    background-image: url("../../../assets/fav_icon.avif");
+    background-color: #cccccc;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
