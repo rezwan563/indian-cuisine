@@ -10,8 +10,8 @@ const Home = () => {
     <div>
       <section className="bg-img-container">
         <Banner></Banner>
-        <div className="bottom-left text-3xl font-bold md:text-5xl">
-          Food you crave
+        <div className="bottom-left text-3xl font-bold md:text-7xl">
+          Food that you <span className=''>crave</span>
           <br />
           <div className="text-left mt-5">
             <Link to="/about_us">

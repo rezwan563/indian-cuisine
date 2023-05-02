@@ -12,7 +12,7 @@ const FeaturedRecipeOne = () => {
       <div className="grid md:grid-cols-2">
         <div className="border-2 border-slate-200 shadow-xl w-full md:w-96 image-full">
           <figure>
-            <img className="rounded" src="/public/fav_icon.avif" alt="Shoes" />
+            <img className="rounded" src="/fav_icon.avif" alt="Shoes" />
           </figure>
         </div>
         <div>

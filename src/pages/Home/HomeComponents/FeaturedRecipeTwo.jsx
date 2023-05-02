@@ -17,7 +17,7 @@ const FeaturedRecipeTwo = () => {
         </div>
         <div className="place-self-end order-first md:order-none border-slate-200 shadow-xl w-full md:w-96 image-full">
           <figure>
-            <img className="rounded" src="/public/fav_icon.avif" alt="Shoes" />
+            <img className="rounded" src="/fav_icon.avif" alt="Shoes" />
           </figure>
         </div>
       

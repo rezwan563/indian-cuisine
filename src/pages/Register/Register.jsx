@@ -10,7 +10,7 @@ const Register = () => {
             <h1 className="text-5xl font-bold">Please Register</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <div className="card-body">
+            <form className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Name</span>
@@ -81,9 +81,9 @@ const Register = () => {
                 </p>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-warning">Register</button>
+                <button className="btn btn-warning" type="submit">Register</button>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
