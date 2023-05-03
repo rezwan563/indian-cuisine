@@ -2,49 +2,52 @@ import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
+import {
+  BrowserView,
+  MobileView,
+  isBrowser,
+  isMobile,
+} from "react-device-detect";
 
 const Login = () => {
-  const { emailLogin, googleLogin, githubLogin } = useContext(AuthContext)
+  const { emailLogin, googleLogin, googleLoginMobile, githubLogin } =
+    useContext(AuthContext);
 
-  const [email, setEmail]  = useState('')
-  const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [hidden, setHidden] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [hidden, setHidden] = useState(true);
 
-  const handleLogin = (e) =>{
-      e.preventDefault()
-      emailLogin(email, password)
-      .then(result =>{
+  const handleLogin = (e) => {
+    e.preventDefault();
+    emailLogin(email, password)
+      .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
-        
       })
-      .catch(error =>{
-        console.log(error.message)
-      })
-  }
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
 
-  const hangleGoogleLogin = () =>{
+  const hangleGoogleLogin = () => {
     googleLogin()
-    .then(result =>{
-      const loggedUser = result.user;
-      console.log(loggedUser);
-    })
-    .catch(error =>{
-      console.log(error.message)
-    })
-  }
+      .then((result) => {
+        const loggedUser = result.user;
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
 
-  const handleGithubLogin = () =>{
+  const handleGithubLogin = () => {
     githubLogin()
-    .then(result =>{
-      const loggedUser = result.user;
-      console.log(loggedUser);
-    })
-    .catch(error =>{
-      console.log(error.message)
-    })
-  }
+      .then((result) => {
+        const loggedUser = result.user;
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
 
   return (
     <section className="flex justify-center">
@@ -72,14 +75,16 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  onChange={(e) =>{setPassword(e.target.value)}}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
                   required
                 />
-                <p className="py-2">{error && error}</p>
-                 <div className="pt-2">
+                <p className="py-2 text-red-500">{error && error}</p>
+                <div className="pt-2">
                   {hidden ? (
                     <FaEyeSlash onClick={() => setHidden(!hidden)}></FaEyeSlash>
                   ) : (
@@ -104,30 +109,29 @@ const Login = () => {
                 </p>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-warning" type="submit">Login</button>
+                <button className="btn btn-warning" type="submit">
+                  Login
+                </button>
               </div>
-              
             </form>
-            <button onClick={hangleGoogleLogin} className="border py-3 flex justify-center items-center gap-2 hover:bg-slate-200">
-                <div>
-                  <img
-                    src="/google_icon.jpeg"
-                    className="h-10"
-                    alt=""
-                  />
-                </div>
-                <div>Continue with Google</div>
-              </button>
-              <button onClick={handleGithubLogin} className="border py-3 flex justify-center items-center gap-2 hover:bg-slate-200">
-                <div>
-                  <img
-                    src="/github_icon.jpg"
-                    className="h-10"
-                    alt=""
-                  />
-                </div>
-                <div>Continue with Github</div>
-              </button>
+            <button
+              onClick={hangleGoogleLogin}
+              className="border py-3 flex justify-center items-center gap-2 hover:bg-slate-200"
+            >
+              <div>
+                <img src="/google_icon.jpeg" className="h-10" alt="" />
+              </div>
+              <div>Continue with Google</div>
+            </button>
+            <button
+              onClick={handleGithubLogin}
+              className="border py-3 flex justify-center items-center gap-2 hover:bg-slate-200"
+            >
+              <div>
+                <img src="/github_icon.jpg" className="h-10" alt="" />
+              </div>
+              <div>Continue with Github</div>
+            </button>
           </div>
         </div>
       </div>

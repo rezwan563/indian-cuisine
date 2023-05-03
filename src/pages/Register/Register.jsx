@@ -29,7 +29,6 @@ const Register = () => {
     createUser(email, password).then((result) => {
       const newUser = result.user;
       e.target.reset();
-      console.log(newUser);
       profileUpdate(name, photo).then(() =>
         toast.success(`Dear ${name}, your profile has been updated`)
       );
@@ -48,8 +47,8 @@ const Register = () => {
       setError("At least one digit");
     } else if (!/[#?!@$%^&*-]/.test(passwordInput)) {
       setError("At least one special character");
-    } else if (!/.{8,}/.test(passwordInput)) {
-      setError("Minimum eight in length");
+    } else if (!/.{6,}/.test(passwordInput)) {
+      setError("Minimum six in length");
     } else {
       setError("");
     }
