@@ -4,7 +4,8 @@
 
 * In this site you will find **indian recipes** that are loved by all.
 * Some of India's reknowned chef's information is also available.
-* Homepage displays **featured recipes**, **chefs**.
+* Homepage displays **featured_recipes**, **Chefs**, **Todays_special_recipe**, **Map**
+* React leaflet is used to display map on homepage.
 
 ### Website link
 

@@ -7,6 +7,7 @@ import FeaturedRecipeTwo from "./HomeComponents/FeaturedRecipeTwo";
 import ChefSection from "./HomeComponents/ChefSection";
 import TodaysSpeciality from "./HomeComponents/TodaysSpeciality";
 import LocationMap from "./HomeComponents/LocationMap";
+import { ToastContainer } from "react-toastify";
 
 const Home = () => {
   const [chefs, setChefs] = useState([]);
@@ -35,6 +36,7 @@ const Home = () => {
 
   return (
     <div>
+      
       <section className="bg-img-container">
         <Banner></Banner>
         <div className="bottom-left text-3xl font-bold md:text-7xl">
@@ -79,7 +81,7 @@ const Home = () => {
         )}
       </section>
       <section>
-       <LocationMap></LocationMap>
+        <LocationMap></LocationMap>
       </section>
     </div>
   );
