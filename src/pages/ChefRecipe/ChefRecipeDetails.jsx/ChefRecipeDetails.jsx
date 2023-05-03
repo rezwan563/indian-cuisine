@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const ChefRecipeDetails = ({ recipe }) => {
@@ -24,13 +25,28 @@ const ChefRecipeDetails = ({ recipe }) => {
         }
          </p>
         <p className="my-3">Rating: </p>
-        <button onClick={handleClick} className="mb-2 md:px-4 md:py-2 bg-white shadow-lg hover:bg-amber-500 hover:text-white ">
+        <button disabled={isClicked} onClick={() =>{
+            toast.success('Recipe added to favourites');
+            setIsClicked(true);
+        }} className={`mb-2 md:px-4 md:py-2 bg-white shadow-lg hover:bg-amber-500 hover:text-white ${isClicked && 'bg-gray-200 hover:bg-gray-200 hover:text-black-500'}`}>
           Add to favourite
         </button>
       </div>
       <div className="">
         <img className="w-full" src="/fav_icon.avif" alt="" />
       </div>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </div>
   );
 };
