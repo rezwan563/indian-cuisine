@@ -25,7 +25,7 @@ const ChefsOnRight = ({ data }) => {
                   </div>
                 </div>
                 <div className=" border-2 shadow-lg rounded-md p-3 bg-amber-400 hover:bg-white hover:text-amber-500">
-                  <Link>
+                  <Link to={`/chef_recipe/${id}`}>
                     <button className="flex gap-2 items-center">View recipes <FaArrowRight></FaArrowRight></button>
                   </Link>
                 </div>
