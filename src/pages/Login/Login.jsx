@@ -1,7 +1,51 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
 
 const Login = () => {
+  const { emailLogin, googleLogin, githubLogin } = useContext(AuthContext)
+
+  const [email, setEmail]  = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [hidden, setHidden] = useState(false)
+
+  const handleLogin = (e) =>{
+      e.preventDefault()
+      emailLogin(email, password)
+      .then(result =>{
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        
+      })
+      .catch(error =>{
+        console.log(error.message)
+      })
+  }
+
+  const hangleGoogleLogin = () =>{
+    googleLogin()
+    .then(result =>{
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    })
+    .catch(error =>{
+      console.log(error.message)
+    })
+  }
+
+  const handleGithubLogin = () =>{
+    githubLogin()
+    .then(result =>{
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    })
+    .catch(error =>{
+      console.log(error.message)
+    })
+  }
+
   return (
     <section className="flex justify-center">
       <div className="hero min-h-screen bg-base-200">
@@ -10,12 +54,13 @@ const Login = () => {
             <h1 className="text-5xl font-bold">Login to continue</h1>
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body">
+            <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
+                  onChange={(e) => setEmail(e.target.value)}
                   type="email"
                   placeholder="email"
                   className="input input-bordered"
@@ -27,11 +72,20 @@ const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
+                  onChange={(e) =>{setPassword(e.target.value)}}
                   type="password"
                   placeholder="password"
                   className="input input-bordered"
                   required
                 />
+                <p className="py-2">{error && error}</p>
+                 <div className="pt-2">
+                  {hidden ? (
+                    <FaEyeSlash onClick={() => setHidden(!hidden)}></FaEyeSlash>
+                  ) : (
+                    <FaEye onClick={() => setHidden(!hidden)}></FaEye>
+                  )}
+                </div>
                 <label className="label">
                   <a href="#" className="label-text-alt link link-hover">
                     Forgot password?
@@ -54,7 +108,7 @@ const Login = () => {
               </div>
               
             </form>
-            <button className="border py-3 flex justify-center items-center gap-2 hover:bg-slate-200">
+            <button onClick={hangleGoogleLogin} className="border py-3 flex justify-center items-center gap-2 hover:bg-slate-200">
                 <div>
                   <img
                     src="/google_icon.jpeg"
@@ -64,7 +118,7 @@ const Login = () => {
                 </div>
                 <div>Continue with Google</div>
               </button>
-              <button className="border py-3 flex justify-center items-center gap-2 hover:bg-slate-200">
+              <button onClick={handleGithubLogin} className="border py-3 flex justify-center items-center gap-2 hover:bg-slate-200">
                 <div>
                   <img
                     src="/github_icon.jpg"

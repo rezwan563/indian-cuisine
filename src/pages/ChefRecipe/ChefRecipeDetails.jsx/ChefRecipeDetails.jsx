@@ -26,7 +26,7 @@ const ChefRecipeDetails = ({ recipe }) => {
          </p>
         <p className="my-3">Rating: </p>
         <button disabled={isClicked} onClick={() =>{
-            toast.success('Recipe added to favourites');
+            toast.success(`${name} is your favourite`);
             setIsClicked(true);
         }} className={`mb-2 md:px-4 md:py-2 bg-white shadow-lg hover:bg-amber-500 hover:text-white ${isClicked && 'bg-gray-200 hover:bg-gray-200 hover:text-black-500'}`}>
           Add to favourite
