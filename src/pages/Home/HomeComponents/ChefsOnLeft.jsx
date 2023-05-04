@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
+import LazyLoad from "react-lazy-load";
 
 const ChefsOnLeft = ({ data }) => {
   const { id, name, imgUrl, experience, likes, numRecipes } = data;
@@ -20,14 +21,18 @@ const ChefsOnLeft = ({ data }) => {
               {likes} likes
             </div>
             <div className=" border-2 shadow-lg rounded-md p-3 bg-amber-400 hover:bg-white hover:text-amber-500">
-                  <Link to={`/chef_recipe/${id}`}>
-                    <button className="flex gap-2 items-center">View recipes <FaArrowRight></FaArrowRight></button>
-                  </Link>
-                </div>
+              <Link to={`/chef_recipe/${id}`}>
+                <button className="flex gap-2 items-center">
+                  View recipes <FaArrowRight></FaArrowRight>
+                </button>
+              </Link>
+            </div>
           </div>
         </ul>
       </div>
-      <img className="order-first" src={imgUrl} alt="" />
+      <LazyLoad height='full' offset={100}>
+        <img className="order-first" src={imgUrl} alt="" />
+      </LazyLoad>
     </div>
   );
 };
