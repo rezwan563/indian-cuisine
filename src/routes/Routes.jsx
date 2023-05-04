@@ -22,7 +22,7 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: 'chef_recipe/:id',
+                path: 'chef_recipes/:id',
                 element: <PrivateRoute><ChefRecipeLayout></ChefRecipeLayout></PrivateRoute>,
                 loader: ({params}) => fetch(`https://assignment-10-indian-cuisine-server-rezwan563.vercel.app/chefs/${params.id}`)
             },

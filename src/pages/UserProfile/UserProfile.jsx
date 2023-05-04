@@ -62,20 +62,20 @@ const UserProfile = () => {
     <div className="w-3/4  mx-auto my-8 md:my-12">
       <div className="grid md:grid-cols-2">
         <div>
-          <h2 className="text-2xl md:pb-8">
+          <h2 className="text-2xl dark:text-white md:pb-8">
             Welcome, <span className="text-3xl">{user?.displayName}</span>{" "}
           </h2>
           <img className="w-fit" src={user?.photoURL} alt="" />
-          <p><span className="font-semibold">Email: </span>{user?.email}</p>
+          <p className="dark:text-white"><span className="font-semibold">Email: </span>{user?.email}</p>
           
         </div>
 
         <div>
           <form onSubmit={handleUpdate} className="card-body">
             <div className="form-control">
-            <p className="font-semibold">Update your profile</p>
+            <p className="dark:text-white font-semibold">Update your profile</p>
               <label className="label">
-                <span className="label-text">Name</span>
+                <span className="label-text dark:text-white">Name</span>
               </label>
               <input
                 onChange={(e) => {
@@ -89,7 +89,7 @@ const UserProfile = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text">Photo url</span>
+                <span className="label-text dark:text-white">Photo url</span>
               </label>
               <input
                 onChange={(e) => {

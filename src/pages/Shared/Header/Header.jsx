@@ -14,10 +14,9 @@ const Header = () => {
   );
 
   useEffect(() => {
-    localStorage.setItem("class", theme)
+    localStorage.setItem("class", theme);
     const localTheme = localStorage.getItem("class", theme);
-    document.querySelector("html").setAttribute("class", localTheme)
-
+    document.querySelector("html").setAttribute("class", localTheme);
   }, [theme]);
 
   const handleLogout = () => {
@@ -27,9 +26,9 @@ const Header = () => {
     <nav className="text-center md:flex md:justify-between md:items-center mb-8 md:w-3/4 md:mx-auto md:pt-4">
       <div className="pt-8 md:py-0">
         <div>
-          <ActiveRoute  to="/">Home</ActiveRoute>
-          <ActiveRoute  to="/about_us">About</ActiveRoute>
-          <ActiveRoute  to="/blog">Blog</ActiveRoute>
+          <ActiveRoute to="/">Home</ActiveRoute>
+          <ActiveRoute to="/about_us">About</ActiveRoute>
+          <ActiveRoute to="/blog">Blog</ActiveRoute>
         </div>
       </div>
       <div className="py-8 md:py-0">
@@ -39,35 +38,48 @@ const Header = () => {
       </div>
       <div className="md:flex items-start md:gap-2">
         <div className="flex justify-center">
-          <Link to={`${user && "/user_profile"}`}>
-            <LazyLoad height="full">
+         {
+          user &&  <Link to={`${user && "/user_profile"}`}>
+          <LazyLoad height="full">
+             
               <img
                 className="w-12 h-12 rounded-full border-green-400 border-4"
                 src={user ? user.photoURL : "/avatar_img.jpg"}
                 alt=""
                 title={user?.displayName}
               />
-            </LazyLoad>
-          </Link>
+            
+          </LazyLoad>
+        </Link>
+         }
         </div>
         {user ? (
           <div>
-            <button onClick={handleLogout} className="bg-amber-500 p-2 dark:text-white  border">
+            <button
+              onClick={handleLogout}
+              className="bg-amber-500 p-2 dark:text-white  border"
+            >
               Logout
             </button>
           </div>
         ) : (
           <div>
             <Link to="/login">
-              <button className="bg-amber-500 p-2 dark:text-white border">Login</button>
+              <button className="bg-amber-500 p-2 dark:text-white border">
+                Login
+              </button>
             </Link>
           </div>
         )}
 
         <label className="swap swap-rotate p-4 md:p-0">
-          <input 
-          onClick={(e) => e.target.checked ? setTheme('dark') : setTheme('light')}
-          type="checkbox" />
+          <input
+            checked={theme === 'light' ? false : true}
+            onChange={(e) =>
+              e.target.checked ? setTheme("dark") : setTheme("light")
+            }
+            type="checkbox"
+          />
 
           <svg
             className="swap-on fill-current w-8 h-8"

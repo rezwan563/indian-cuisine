@@ -21,7 +21,7 @@ const ChefsOnLeft = ({ data }) => {
               {likes} likes
             </div>
             <div className=" border-2 shadow-lg rounded-md p-3 bg-amber-400 hover:bg-white dark:text-white dark:hover:text-black hover:text-amber-500">
-              <Link to={`/chef_recipe/${id}`}>
+              <Link to={`/chef_recipes/${id}`}>
                 <button className="flex gap-2 items-center">
                   View recipes <FaArrowRight></FaArrowRight>
                 </button>

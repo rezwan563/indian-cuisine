@@ -8,7 +8,7 @@ const ChefsOnRight = ({ data }) => {
   return (
     <div>
       <div className="bg-slate-100 p-3 mb-8 rounded-lg">
-        <LazyLoad height="full" offset={300}>
+        <LazyLoad height="full" offset={100}>
           <img className="" src={imgUrl} alt="" />
         </LazyLoad>
         <div>
@@ -28,7 +28,7 @@ const ChefsOnRight = ({ data }) => {
                   </div>
                 </div>
                 <div className=" border-2 shadow-lg rounded-md p-3 bg-amber-400 hover:bg-white dark:text-white dark:hover:text-black hover:text-amber-500">
-                  <Link to={`/chef_recipe/${id}`}>
+                  <Link to={`/chef_recipes/${id}`}>
                     <button className="flex gap-2 items-center">
                       View recipes <FaArrowRight></FaArrowRight>
                     </button>
