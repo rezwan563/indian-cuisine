@@ -11,7 +11,7 @@ const About = () => {
         </div>
       </section>
       <div className="w-3/4 mx-auto my-8 md:my-12">
-        <div className="border shadow-sm p-5">
+        <div className="shadow-sm p-5">
           <p className=" text-lg  pb-5">
             Welcome to our Indian Cuisine establishment! We take pride in
             offering authentic and delicious Indian cuisine that will transport

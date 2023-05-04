@@ -6,8 +6,8 @@ const FeaturedRecipeTwo = ({recipe}) => {
     <div className="w-3/4 md:w-2/3 mx-auto mb-8 md:mb-24">
       <div className="grid md:grid-cols-2">
       <div>
-          <h1 className="text-black text-2xl md:text-3xl w-8 md:w-0">{name}</h1>
-          <p>
+          <h1 className="text-black dark:text-white text-2xl md:text-3xl w-8 md:w-0">{name}</h1>
+          <p className="dark:text-white">
             {description}
           </p>
         </div>

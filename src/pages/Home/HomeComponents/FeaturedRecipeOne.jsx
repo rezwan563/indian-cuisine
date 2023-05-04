@@ -17,8 +17,8 @@ const FeaturedRecipeOne = ({recipe}) => {
           </figure>
         </div>
         <div>
-          <h1 className="text-black text-2xl md:text-3xl w-8 md:w-0">{name}</h1>
-          <p>{description}</p>
+          <h1 className="text-black dark:text-white text-2xl md:text-3xl w-8 md:w-0">{name}</h1>
+          <p className="dark:text-white">{description}</p>
         </div>
       </div>
     </section>

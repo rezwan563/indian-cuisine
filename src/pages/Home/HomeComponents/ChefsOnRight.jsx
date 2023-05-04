@@ -12,22 +12,22 @@ const ChefsOnRight = ({ data }) => {
           <img className="" src={imgUrl} alt="" />
         </LazyLoad>
         <div>
-          <h1 className="text-2xl md:text-3xl">{name}</h1>
+          <h1 className="text-2xl dark:text-black md:text-3xl">{name}</h1>
           <ul>
-            <li className="font-semibold shadow-sm">
+            <li className="font-semibold dark:text-black shadow-sm">
               {experience} years of experience
             </li>
             <li className="w-full">
               <div className="flex">
-                <div className=" border-2 shadow-lg rounded-md p-3 bg-amber-400">
+                <div className=" border-2 shadow-lg dark:text-white rounded-md p-3 bg-amber-400">
                   {numRecipes} recipes
                 </div>
                 <div>
-                  <div className="border-2 shadow-lg rounded-md p-3 bg-amber-400 ">
+                  <div className="border-2 shadow-lg dark:text-white rounded-md p-3 bg-amber-400 ">
                     {likes} likes
                   </div>
                 </div>
-                <div className=" border-2 shadow-lg rounded-md p-3 bg-amber-400 hover:bg-white hover:text-amber-500">
+                <div className=" border-2 shadow-lg rounded-md p-3 bg-amber-400 hover:bg-white dark:text-white dark:hover:text-black hover:text-amber-500">
                   <Link to={`/chef_recipe/${id}`}>
                     <button className="flex gap-2 items-center">
                       View recipes <FaArrowRight></FaArrowRight>
