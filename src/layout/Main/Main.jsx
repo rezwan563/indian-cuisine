@@ -7,7 +7,19 @@ import { ToastContainer } from "react-toastify";
 const Main = () => {
   return (
     <div className="">
-     
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+
       <Header></Header>
       <Outlet></Outlet>
       <Footer></Footer>

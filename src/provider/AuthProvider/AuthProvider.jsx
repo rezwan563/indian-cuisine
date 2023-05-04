@@ -18,22 +18,23 @@ const AuthProvider = ({children}) => {
     }
 
     const emailLogin = (email, password) =>{
+        setLoading(true)
         return signInWithEmailAndPassword(auth, email, password)
     }
 
     const googleLogin = () =>{
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
 
-    const googleLoginMobile =() =>{
-        return signInWithRedirect(auth)
-    }
-
+   
     const githubLogin = () =>{
+        setLoading(true)
         return signInWithPopup(auth, githubProvider)
     }
 
     const logOut = () =>{
+        setLoading(false)
         return signOut(auth)
     }
 
@@ -48,6 +49,7 @@ const AuthProvider = ({children}) => {
     },[])
 
     const profileUpdate = (name, photo) =>{
+        setLoading(true)
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photo
@@ -62,7 +64,6 @@ const AuthProvider = ({children}) => {
         profileUpdate,
         emailLogin,
         googleLogin,
-        googleLoginMobile,
         githubLogin,
         logOut,
 

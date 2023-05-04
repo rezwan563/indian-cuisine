@@ -1,17 +1,15 @@
 import React, { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
-import {
-  BrowserView,
-  MobileView,
-  isBrowser,
-  isMobile,
-} from "react-device-detect";
+import { ToastContainer, toast } from "react-toastify";
 
 const Login = () => {
-  const { emailLogin, googleLogin, googleLoginMobile, githubLogin } =
+  const { emailLogin, googleLogin, githubLogin } =
     useContext(AuthContext);
+    const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from?.pathname || '/'
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -23,9 +21,24 @@ const Login = () => {
     emailLogin(email, password)
       .then((result) => {
         const loggedUser = result.user;
+        e.target.value;
+        toast.success('Login successful')
+        navigate(from)
       })
       .catch((error) => {
-        setError(error.message);
+        const errorMessage = error.message;
+        if(errorMessage === "Firebase: Error (auth/wrong-password)."){
+          setError("Password did not match. Try again");
+          toast.error("Password did not match")
+        }
+        else if(errorMessage === "Firebase: Error (auth/user-not-found)."){
+          setError("Email did not match. Try again ")
+          toast.error("Email did not match")
+        }
+        else{
+          setError(errorMessage)
+          toast.error(errorMessage)
+        }
       });
   };
 
@@ -33,6 +46,7 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         const loggedUser = result.user;
+        navigate(from)
       })
       .catch((error) => {
         setError(error.message);
@@ -43,6 +57,7 @@ const Login = () => {
     githubLogin()
       .then((result) => {
         const loggedUser = result.user;
+        navigate(from)
       })
       .catch((error) => {
         setError(error.message);
@@ -101,7 +116,7 @@ const Login = () => {
                     Don't have an account?{" "}
                     <span>
                       {" "}
-                      <Link to="/register" className="text-amber-500 underline">
+                      <Link to="/register" state={{from: location.state}} className="text-amber-500 underline">
                         Create one!
                       </Link>
                     </span>

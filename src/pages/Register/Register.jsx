@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../provider/AuthProvider/AuthProvider";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
@@ -7,6 +7,9 @@ import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const { createUser, profileUpdate } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.from?.pathname || "/";
 
   const [name, setName] = useState("");
   const [photo, setPhoto] = useState("");
@@ -22,22 +25,32 @@ const Register = () => {
     if (password !== confirm) {
       setError("Password did not match. Try Again");
       return;
+    } else {
+      setError("");
     }
-    else{
-      setError('')
-    }
-    createUser(email, password).then((result) => {
-      const newUser = result.user;
-      e.target.reset();
-      profileUpdate(name, photo).then(() =>
-        toast.success(`Dear ${name}, your profile has been updated`)
-      );
-    });
+    createUser(email, password)
+      .then((result) => {
+        const newUser = result.user;
+        e.target.reset();
+        profileUpdate(name, photo).then(() => {
+          toast.success(`Dear ${name}, your profile has been updated`);
+          navigate(from);
+        });
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        if (errorMessage === "Firebase: Error (auth/email-already-in-use).") {
+          setError("Email already exists");
+          setError("Email already exists");
+        } else {
+          setError(errorMessage);
+        }
+      });
   };
 
   const handlePassword = (e) => {
     const passwordInput = e.target.value;
-   
+
     if (!/[A-Z]/.test(passwordInput)) {
       setError("At least one upper case");
       return;
@@ -54,8 +67,6 @@ const Register = () => {
     }
     setPassword(passwordInput);
   };
-
-  
 
   return (
     <section className="flex justify-center">

@@ -9,6 +9,7 @@ import LoginLayout from "../layout/Authentication/LoginLayout";
 import RegisterLayout from "../layout/Authentication/RegisterLayout";
 import ChefRecipe from "../pages/ChefRecipe/ChefRecipe/ChefRecipe";
 import ChefRecipeLayout from "../layout/ChefRecipeLayout/ChefRecipeLayout";
+import PrivateRoute from "../provider/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
             },
             {
                 path: 'chef_recipe/:id',
-                element: <ChefRecipeLayout></ChefRecipeLayout>,
+                element: <PrivateRoute><ChefRecipeLayout></ChefRecipeLayout></PrivateRoute>,
                 loader: ({params}) => fetch(`https://assignment-10-indian-cuisine-server-rezwan563.vercel.app/chefs/${params.id}`)
             },
             {
