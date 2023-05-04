@@ -28,12 +28,14 @@ const Header = () => {
       </div>
       <div className="md:flex items-start md:gap-2">
         <div className="flex justify-center">
-          <img
-            className="w-12 h-12 rounded-full border-green-400 border-4"
-            src={user ? user.photoURL : "/avatar_img.jpg"}
-            alt=""
-            title={user?.displayName}
-          />
+          <Link to={`${user && '/user_profile'}`}>
+            <img
+              className="w-12 h-12 rounded-full border-green-400 border-4"
+              src={user ? user.photoURL : "/avatar_img.jpg"}
+              alt=""
+              title={user?.displayName}
+            />
+          </Link>
         </div>
         {user ? (
           <div>

@@ -13,6 +13,8 @@ const Home = () => {
   const [chefs, setChefs] = useState([]);
   const [recipes, setRecipes] = useState([]);
   const [allrecipes, setAllRecipes] = useState([]);
+  const [todaysSpecial, setTodaysSpecial] = useState(null);
+ 
 
   useEffect(() => {
     fetch(
@@ -28,15 +30,25 @@ const Home = () => {
     )
       .then((res) => res.json())
       .then((data) => {
+        const arrLength = data.length;
+        // console.log(arrLength);
         setAllRecipes(data);
         const twoRecipes = data.filter((i) => parseInt(i.id) < 3);
+        // This below code finds random todays special recipe from allrecipes array
+        if (data) {
+          // console.log('if er moddhe')
+          const randomIndex = Math.floor(Math.random() * (data.length));
+          // console.log("index", randomIndex);
+          const randomElement = data[randomIndex];
+          // console.log("randomelement", randomElement);
+          setTodaysSpecial(randomElement);
+        }
         setRecipes(twoRecipes);
       });
   }, []);
 
   return (
     <div>
-      
       <section className="bg-img-container">
         <Banner></Banner>
         <div className="bottom-left text-3xl font-bold md:text-7xl">
@@ -76,9 +88,9 @@ const Home = () => {
         {chefs.length > 0 && <ChefSection chefs={chefs}></ChefSection>}
       </section>
       <section>
-        {allrecipes.length === 10 && (
-          <TodaysSpeciality allrecipes={allrecipes}></TodaysSpeciality>
-        )}
+        {
+          todaysSpecial && <TodaysSpeciality todaysSpecial={todaysSpecial}></TodaysSpeciality>
+        }
       </section>
       <section>
         <LocationMap></LocationMap>

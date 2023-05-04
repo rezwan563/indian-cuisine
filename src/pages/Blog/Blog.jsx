@@ -9,6 +9,9 @@ const Blog = () => {
         <div className="bottom-left text-3xl font-bold md:text-5xl">Blog</div>
       </section>
       <div className="w-3/4 md:w-2/3 mx-auto my-8 md:my-36">
+        <div className="text-right my-4">
+          <button className="bg-amber-500 text-white px-4 py-2 shadow-lg border rounded-md">Pdf</button>
+        </div>
         <div className="border shadow-md rounded-sm p-4 md:p-8 mb-2 md:mb-4">
           <p className="font-semibold mb-2 md:mb-4">Controlled and uncontrolles components</p>
           <p>Ans: </p>

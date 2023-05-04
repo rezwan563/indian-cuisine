@@ -21,8 +21,8 @@ const Login = () => {
     emailLogin(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        e.target.value;
-        toast.success('Login successful')
+        e.target.reset();
+        toast.success('Login Successful');
         navigate(from)
       })
       .catch((error) => {
@@ -46,6 +46,7 @@ const Login = () => {
     googleLogin()
       .then((result) => {
         const loggedUser = result.user;
+        toast.success('Login successful')
         navigate(from)
       })
       .catch((error) => {
@@ -57,6 +58,7 @@ const Login = () => {
     githubLogin()
       .then((result) => {
         const loggedUser = result.user;
+        toast.success('Login successful')
         navigate(from)
       })
       .catch((error) => {

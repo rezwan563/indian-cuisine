@@ -10,6 +10,7 @@ import RegisterLayout from "../layout/Authentication/RegisterLayout";
 import ChefRecipe from "../pages/ChefRecipe/ChefRecipe/ChefRecipe";
 import ChefRecipeLayout from "../layout/ChefRecipeLayout/ChefRecipeLayout";
 import PrivateRoute from "../provider/PrivateRoute/PrivateRoute";
+import UserProfile from "../pages/UserProfile/UserProfile";
 
 const router = createBrowserRouter([
     {
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
             {
                 path: 'about_us',
                 element: <About></About>
+            },
+            {
+                path: 'user_profile',
+                element: <PrivateRoute><UserProfile></UserProfile></PrivateRoute>
             },
             {
                 path: 'blog',
